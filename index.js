@@ -141,4 +141,71 @@ function findTwo(arr){
     })
     return [resOther,res^resOther]
 }
-findTwo([1,2,3,3,2,1,4,5])
+// findTwo([1,2,3,3,2,1,4,5])
+
+
+
+
+
+let a = [24,521,5,12,125,125,6,216,621,61]
+
+/**
+ *  主函数
+ *  执行 递归操作 
+ *
+ * @param {*} arr 函数
+ */
+function mergeSort(arr){
+    if(arr == null || arr.length<2){
+        return  
+    }
+    process(arr,0,arr.length-1)
+}
+
+/**
+ * 递归函数
+ *   做了什么？
+ * 每次去 将 L 到 R 区域 通过寻找中间下标的方法 分成左右2个区域
+ * 接受 三个参数 
+ * @param {*} arr 原数组
+ * @param {*} L  将要被划分的区域 的左侧下标
+ * @param {*} R     将要被划分的区域 的右侧下标
+ */
+function process(arr,L,R){
+    
+    //L 到 R 范围内进行排序
+    if(L===R){
+        return 
+    }
+    //计算中间下标的位置
+    let mid = L + ( (R-L) >> 1 )
+    //划分成 L----mid   和 mid+1 到 R  的问题
+    process(arr,L,mid)
+    process(arr,mid+1,R)
+    merge(arr,L,mid,R)
+}
+
+function merge(arr,L,M,R){
+    let helpArr =[],  //额外空间存放排好序的数组
+    i=0,      //help 数组初始下标的位置
+    p1 = L, //左指针
+    p2= M+1 //右指针  
+    //均向右移动
+    //临界条件
+    while( p1<=M && p2<=R ){
+        //对比当前位置的大小 并将比较的结果小的存入help当前下标处 存的是哪边 就移动哪边的指针 help 数组 下表往后移
+        helpArr[i++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++]
+    }
+    while(p1<=M){
+        helpArr[i++] =  arr[p1++] 
+    }
+    while(p2<=R){
+        helpArr[i++] =  arr[p2++] 
+    }
+    for(i=0;i<helpArr.length;i++){
+        arr[L+i] = helpArr[i]
+    }
+}
+
+mergeSort(a)
+console.log(a)
