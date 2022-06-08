@@ -9,6 +9,7 @@ function swap (arr,i,j){
     let tem = arr[i]
     arr[i] = arr[j]
     arr[j] = tem 
+    console.log(arr)
 }
 
 
@@ -87,18 +88,16 @@ function  insertSort(arr){
         return arr 
     }
     for(let i = 1 ;i<arr.length;i++){
-        for(let j = i-1 ;j>=0 ;j--){
-            if(arr[j]>arr[j+1]){
-                swap(arr,j,j+1)
-            }
+            for(let j = i-1 ;j>=0 ;j--){
+                if(arr[j]>arr[j+1]){
+                    swap(arr,j,j+1)
+                }
         }
-
     }
-    console.log(arr)
     return arr 
 }
 
-// insertSort([421 ,5,52,15,2,15,21,5,125,12,5,1,2,61,6,7345745,7])
+insertSort([1,2,5,3,4])
 
 
 
@@ -207,5 +206,5 @@ function merge(arr,L,M,R){
     }
 }
 
-mergeSort(a)
-console.log(a)
+// mergeSort(a)
+// console.log(a)
