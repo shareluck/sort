@@ -81,3 +81,49 @@ mergeSort([5,2,4,3,2,1])
 //2 merge [2,3] [1] 1 < 2 < 3 helpArr [1,2,3] 回归上一层 arr = [2,4,5,1,2,3]
 //2 merge [2,4,5] [1,2,3] 1 < 2 < 2<3<4<5 helpArr [1,2,2,3,4,5] 回归上一层 arr = [1,2,2,3,4,5]
 
+
+
+
+
+// function sort(arr){
+//     if(arr.length <2 || arr==null){
+//         return
+//     }
+//     let l = 0,r = arr.length-1
+//     process1(arr,l,r)
+// }
+
+// function process1(arr,l,r){
+//     if(l>=r){
+//         return
+//     }
+//     let m = l +((r-l)>>1)
+//     process1(arr,l,m)
+//     process1(arr,m+1,r)
+//     merge1(arr,l,m,r)
+// }
+
+
+// function merge1(arr,l,m,r){
+//     let p1 = l,
+//     p2 = m+1,
+//     helpArr = [],
+//     i=0
+//     while(p1<=m && p2 <=r){
+//         helpArr[i++] = arr[p1] >arr[p2] ? arr[p2++]: arr[p1++]
+//     }
+//     while(p1<=m){
+//         helpArr[i++] = arr[p1++]
+//     }
+//     while(p2<=r){
+//         helpArr[i++] = arr[p2++]
+//     }
+//     for(i = 0 ;i<helpArr.length;i++){
+//         arr[l+i] = helpArr[i]
+//     }
+// }
+
+// let b = [21452,152,5,1,62,1,6,126,1261,2,6,126,12,6,17,37454,8,548,5,48,945,]
+
+// sort(b)
+// console.log(b)

@@ -72,8 +72,10 @@ function bubbleSort(arr){
 // }
 let a = [2,1,3,4]
 // simpleBubbleSort(a)
-bubbleSort(a)
+// bubbleSort(a)
 // console.log(a)
+
+
 
 
 

@@ -21,9 +21,9 @@ function insertSort(arr){
 }
 
 
-let a = [5,2,4,2,1]
-insertSort(a)
-console.log(a)
+// let a = [5,2,4,2,1]
+// insertSort(a)
+// console.log(a)
 
 
 
@@ -44,3 +44,24 @@ console.log(a)
 //  0-4 有序 1和4做比较 1<4  交换    [2,2,1,4,5]
 //  0-4 有序 1和2做比较 1<2  交换    [2,1,2,4,5]
 //  0-4 有序 1和2做比较 1<2  交换    [1,2,2,4,5]
+
+
+
+
+function sort(arr){
+    for(let i = 1 ;i<arr.length;i++){
+        for(let j = i-1;j>=0 ;j--){
+            if(arr[j]>arr[j+1]){
+                swap(arr,j,j+1)
+            }
+        }
+    }
+}
+function swap(arr,a,b){
+    let tem = arr[a]
+    arr[a] = arr[b]
+    arr[b] = tem
+}
+let b = [1,11,111,1111,2,44,24521,521,521,16]
+sort(b)
+console.log(b)

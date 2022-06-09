@@ -29,6 +29,28 @@ function swap(arr,i,j){
     arr[i] = arr[i]^arr[j]
 }
 
-let a = [1,24,24,14,25,15,21,6,16,21,6,216]
-selectSort(a)
-console.log(a)
+// let a = [1,24,24,14,25,15,21,6,16,21,6,216]
+// selectSort(a)
+// console.log(a)
+
+
+
+function sort(array){
+    if(array.lenth<2 || array==null){
+        return 
+    }
+    for (let i = 0; i < array.length-1; i++) {
+        let minIndex = i 
+        for(let j = i+1;j<array.length;j++){
+            minIndex = array[j] > array[minIndex] ? minIndex :j
+        }        
+        if(i !== minIndex){
+        swap(array,i,minIndex)
+
+        }
+    }
+}
+
+let b = [21,421,4,214,1,25,1,25,15,12,66,2,16,12,6,1,71713,7,21]
+sort(b)
+console.log(b)
