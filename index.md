@@ -152,3 +152,63 @@
         arr[b] = tem
     }
 ```
+
+# 堆排序
+- 核心 ：堆 ：数组表示的 完全二叉树 结构
+- 实现
+```js
+    function heapSort(arr){
+        if(arr==null || arr.length<2){
+            return 
+        }
+        for(let i =0 ;i<arr.length;i++){
+            heapInsert(arr,i)
+        }
+
+        let heapSize = arr.length
+        while(heapSize>0){
+            swap(arr,0,heapSize)
+            heapify(arr,0,--heapSize)
+        }
+    }
+
+    function heapInsert(arr,index){
+        let pIndex = index ? Math.floor((index -1 )/2) : 0
+        while( arr[index] > arr[pIndex]){
+            swap(arr,index,pIndex)
+            index = pIndex
+            pIndex = index ? Math.floor((index -1 )/2) : 0
+        }
+    }
+
+    function heapify(arr,index,heapSize){
+        let lci  = index *2 +1 , //左子节点下标
+        rci = lci +1 //右子节点下标
+        while(lci <heapSize ){ //存在子节点
+            let largest 
+            if(rci <heapSize && arr[rci]> arr[lci]){
+                largest = rci 
+            }else{
+                largset = lci 
+            }
+            if(arr[index] > arr[largest]){
+                largest = index
+            }else{
+                largest = largest
+            }
+
+            if(index == largest){
+                break;
+            }
+            swap(arr,index,largest)
+            index = largest
+            lci = index *2
+            rci = lci +1
+        } 
+    }
+    function swap(arr,a,b){
+        let tem = arr[a]
+        arr[a] = arr[b]
+        arr[b] = tem 
+    }
+``` 

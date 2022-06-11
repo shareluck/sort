@@ -1,36 +1,37 @@
+/**
+ * 堆排序
+ * 堆结构  数组表示的完全二叉树  
+ * 父节点下标index 左子节点下标 index *2 +1 右子节点下标 index*2+2 
+ * 知道子节点下标 无论左右 index 父节点下标 (index-1)/2  当index 为 0 时
+ * 无论是 heapInsert 还是 heapify 交换完之后 都要改变相对应的 下标 
+ *
+ * @param {*} arr
+ */
 function heapSort(arr){
-    let heapSize = 0 ;
     if(arr.length<2||arr==null){
         return 
     }
-    // let heapSize = arr.length
-    // while(heapSize>0){
-    //     heapInsert(arr,heapSize)
-    //     heapSize--
-    // }
     for(let i = 0 ;i<arr.length;i++){
         heapInsert(arr,i)
-        heapSize++
     }
-    console.log(heapSize,11)
-    // // let heapSize = arr.length
+    let heapSize = nums.length
+    swap(nums,0,--heapSize)
     while(heapSize > 0 ){
-        swap(arr,0,heapSize-1)
-        // heapSize--
-        // console.log(arr,11)
-        heapify(arr,0,--heapSize)
+        swap(nums,0,heapSize)
+        heapify(nums,0,heapSize)
     }
-    console.log(arr,111)
 }
 
 function heapInsert(arr,index){
     // 计算父节点的  index 
-    let pIndex = Math.floor((index - 1)/2)
+    let pIndex = index  ?   Math.floor((index - 1)/2) : 0 
     //比较当前节点与父节点的 大小
     while(arr[index]> arr[pIndex]){
         //如果 cur > 父   1. 交换    2. curIndex --> pIndex
         swap(arr,index,pIndex)
+        //  注意 
         index =  pIndex
+        pIndex = index  ?   Math.floor((index - 1)/2) : 0 
     }
 }
 
@@ -46,9 +47,11 @@ function heapify(arr,index,size){
         if(index!==largest){
             //交换位置
             swap(arr,index,largest)
-            //更新  index  与 左侧节点的 index
+            //更新  index  与 子节点的 index
             index = largest
+            //  注意 
             lChildIndex = index *2+1
+            rChildIndex = index *2+2
         }else{
             break;
         }
@@ -61,6 +64,6 @@ function swap(arr,a,b){
     arr[b]= tem
 }
  
-let a = [5,4,3,2,1]
+let a = [-4,0,7,4,9,-5,-1,0,-7,-1]
 heapSort(a)
 console.log(a)

@@ -79,7 +79,7 @@ function process1(arr,l,r){
     if(l>=r){
         return
     }
-    let random = l + Math.floor(Math.random()*(r-l+1) )
+    let random =  Math.floor(l +Math.random()*(r-l+1) )
     swap(arr,random,r)
     let sides = partition1(arr,l,r)
     process1(arr,l,sides[0]-1)
